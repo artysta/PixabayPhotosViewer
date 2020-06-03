@@ -10,14 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import pl.adriankurek.pixabayphotosviewer.R;
-import pl.adriankurek.pixabayphotosviewer.models.PixabayImage;
+import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
 public class PhotosAdapter extends BaseAdapter {
-    private List<PixabayImage> photos;
+    private List<PixabayPhoto> photos;
     private Context ctx;
     private LayoutInflater inflater;
 
-    public PhotosAdapter(Context ctx, List<PixabayImage> photos){
+    public PhotosAdapter(Context ctx, List<PixabayPhoto> photos){
         this.ctx = ctx;
         this.photos = photos;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -48,7 +48,7 @@ public class PhotosAdapter extends BaseAdapter {
         }
 
         // Get current photo.
-        PixabayImage current = photos.get(position);
+        PixabayPhoto current = photos.get(position);
         viewHolder.txtId.setText(String.valueOf(current.getId()));
         return convertView;
     }
