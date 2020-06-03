@@ -24,9 +24,9 @@ public class JSONHelper {
     }
 
     // Get images from JSON URL.
-    public List<PixabayImage> getImagesFromJSONURL(final String jsonURL) {
+    public List<PixabayPhoto> getImagesFromJSONURL(final String jsonURL) {
         String url = jsonURL;
-        final List<PixabayImage> images = new ArrayList<>();
+        final List<PixabayPhoto> photos = new ArrayList<>();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -41,20 +41,20 @@ public class JSONHelper {
                             // Loop through the images and just log info.
                             for (int i = 0; i < array.length(); i++) {
                                 // Get current JSON object.
-                                JSONObject photos = array.getJSONObject(i);
+                                JSONObject jsonPhotos = array.getJSONObject(i);
 
                                 // Get the current image data.
-                                String id = photos.getString("id");
-                                String previewURL = photos.getString("previewURL");
+                                String id = jsonPhotos.getString("id");
+                                String previewURL = jsonPhotos.getString("previewURL");
 
-                                PixabayImage image = new PixabayImage();
-                                image.setId(Integer.parseInt(id));
-                                image.setPreviewURL(previewURL);
+                                PixabayPhoto photo = new PixabayPhoto();
+                                photo.setId(Integer.parseInt(id));
+                                photo.setPreviewURL(previewURL);
 
-                                images.add(image);
+                                photos.add(photo);
 
                                 // Log.
-                                Log.i("JSON", images.get(i).toString());
+                                Log.i("JSON", photos.get(i).toString());
                             }
                         } catch (JSONException e) {
                             // TODO catch exception
@@ -71,7 +71,7 @@ public class JSONHelper {
         queue.add(jsonObjectRequest);
         queue.start();
 
-        return images;
+        return photos;
     }
 
     public void addRequestFinishedListener(RequestQueue.RequestFinishedListener listener) {
