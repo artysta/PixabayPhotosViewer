@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 // Class that describes images from pixabay.com (with just 2 fields at this moment)
 // TODO add rest of fields
-public class PixabayImage {
+public class PixabayPhoto {
     private int id;
     private String previewURL;
 
