@@ -4,8 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,7 +47,7 @@ public class PhotosAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = inflater.inflate(R.layout.photos_grid_layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.txtId = convertView.findViewById(R.id.txt_photo_id);
+            viewHolder.image = convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -49,11 +55,14 @@ public class PhotosAdapter extends BaseAdapter {
 
         // Get current photo.
         PixabayPhoto current = photos.get(position);
-        viewHolder.txtId.setText(String.valueOf(current.getId()));
+
+        Picasso.get().load(current.getWebformatURL()).into(viewHolder.image);
+
         return convertView;
     }
 
-    private static class ViewHolder{
-        TextView txtId;
+    private static class ViewHolder {
+        ImageView image;
     }
+
 }
