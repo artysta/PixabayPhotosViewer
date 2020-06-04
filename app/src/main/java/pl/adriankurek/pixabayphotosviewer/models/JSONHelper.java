@@ -46,10 +46,17 @@ public class JSONHelper {
                                 // Get the current image data.
                                 String id = jsonPhotos.getString("id");
                                 String previewURL = jsonPhotos.getString("previewURL");
+                                String webformatURL = jsonPhotos.getString("webformatURL");
+                                String[] tags = jsonPhotos.getString("tags").split(",");
+                                String user = jsonPhotos.getString("user");
 
+                                // Create photo and set data.
                                 PixabayPhoto photo = new PixabayPhoto();
                                 photo.setId(Integer.parseInt(id));
                                 photo.setPreviewURL(previewURL);
+                                photo.setWebformatURL(webformatURL);
+                                photo.setTags(tags);
+                                photo.setUser(user);
 
                                 photos.add(photo);
 
@@ -57,6 +64,7 @@ public class JSONHelper {
                                 Log.i("JSON", photos.get(i).toString());
                             }
                         } catch (JSONException e) {
+                            Log.i("JSON", "ERROR: " + e.getMessage());
                             // TODO catch exception
                         }
                     }
