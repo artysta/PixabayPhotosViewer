@@ -7,7 +7,9 @@ import androidx.annotation.NonNull;
 public class PixabayPhoto {
     private int id;
     private String previewURL;
-    private String[] tags;
+
+    // Tags can be splitted to array by comma.
+    private String tags;
     private String webformatURL;
     private String user;
 
@@ -27,11 +29,11 @@ public class PixabayPhoto {
         return previewURL;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
-    public String[] getTags() {
+    public String getTags() {
         return tags;
     }
 
