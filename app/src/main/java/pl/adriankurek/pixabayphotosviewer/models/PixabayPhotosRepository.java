@@ -20,7 +20,7 @@ public class PixabayPhotosRepository {
     }
 
     // Get photos from data source.
-    public MutableLiveData<List<PixabayPhoto>> getPhotos(Context ctx, String url, RequestQueue.RequestFinishedListener listener) {
+    public MutableLiveData<List<PixabayPhoto>> getPhotos(Context ctx, String url, RequestQueue.RequestFinishedListener<Object> listener) {
         JSONHelper helper = new JSONHelper(ctx);
         helper.addRequestFinishedListener(listener);
         List<PixabayPhoto> photos = helper.getImagesFromJSONURL(url);
