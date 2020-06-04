@@ -6,4 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".views.PhotoDetailsActivity">
 
+    <TextView
+        android:id="@+id/txt_webview_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txt_webview_url"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_photo_id" />
+
+    <TextView
+        android:id="@+id/txt_photo_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txt_photo_id"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txt_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txt_user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_webview_url" />
+
+    <TextView
+        android:id="@+id/txt_tags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txt_tags"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_user" />
 </androidx.constraintlayout.widget.ConstraintLayout>
