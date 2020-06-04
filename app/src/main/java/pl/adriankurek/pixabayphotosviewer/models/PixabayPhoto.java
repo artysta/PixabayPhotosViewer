@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 public class PixabayPhoto {
     private int id;
     private String previewURL;
+    private String[] tags;
+    private String webformatURL;
+    private String user;
 
     public void setId(int id) {
         this.id = id;
@@ -22,6 +25,30 @@ public class PixabayPhoto {
 
     public String getPreviewURL() {
         return previewURL;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setWebformatURL(String webformatURL) {
+        this.webformatURL = webformatURL;
+    }
+
+    public String getWebformatURL() {
+        return webformatURL;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getUser() {
+        return user;
     }
 
     @NonNull
