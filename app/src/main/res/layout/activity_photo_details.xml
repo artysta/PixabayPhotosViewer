@@ -1,49 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.PhotoDetailsActivity">
 
-    <TextView
-        android:id="@+id/txt_webview_url"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_image"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="txt_webview_url"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_photo_id" />
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:layout_margin="@dimen/photos_grid_margin"
+        app:cardElevation="@dimen/card_elevation" >
 
-    <TextView
-        android:id="@+id/txt_photo_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="txt_photo_id"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgView" />
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/imgView"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_details"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_below="@id/card_image"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:layout_margin="@dimen/photos_grid_margin"
+        app:cardElevation="@dimen/card_elevation" >
 
-    <TextView
-        android:id="@+id/txt_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="txt_user"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_webview_url" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="3dp">
 
-    <TextView
-        android:id="@+id/txt_tags"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="txt_tags"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_user" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txt_photo_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="txt_photo_id"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_webview_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="txt_webview_url"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_photo_id" />
+
+            <TextView
+                android:id="@+id/txt_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="txt_tags"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_user" />
+
+            <TextView
+                android:id="@+id/txt_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="txt_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_webview_url" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

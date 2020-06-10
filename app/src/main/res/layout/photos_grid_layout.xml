@@ -8,8 +8,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin=".5dp"
-        app:cardCornerRadius="2dp">
+        android:layout_marginStart="@dimen/photos_grid_margin"
+        android:layout_marginLeft="@dimen/photos_grid_margin"
+        android:layout_marginTop="@dimen/photos_grid_margin"
+        android:layout_marginEnd="@dimen/photos_grid_margin"
+        android:layout_marginRight="@dimen/photos_grid_margin"
+        android:layout_marginBottom="@dimen/photos_grid_margin"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -19,8 +25,8 @@
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
                 tools:ignore="ContentDescription" />
 
         </FrameLayout>
