@@ -3,7 +3,10 @@ package pl.adriankurek.pixabayphotosviewer.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +22,7 @@ import java.text.MessageFormat;
 import pl.adriankurek.pixabayphotosviewer.BuildConfig;
 import pl.adriankurek.pixabayphotosviewer.R;
 import pl.adriankurek.pixabayphotosviewer.adapters.PhotosAdapter;
+import pl.adriankurek.pixabayphotosviewer.models.NetworkChecker;
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 import pl.adriankurek.pixabayphotosviewer.viewmodels.PhotoViewModel;
 
@@ -53,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
+            // Make toast and return if there is no internet connection.
+            if (!NetworkChecker.isNetworkAvailable(this)) {
+                Toast.makeText(this, "Brak połączenia z siecią!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             progressBar.setVisibility(View.VISIBLE);
 
             // {0} stands for API_KEY, {1} for search query.
@@ -75,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener((parent, view, position, id) -> {
+            // Make toast and return if there is no internet connection.
+            if (!NetworkChecker.isNetworkAvailable(this)) {
+                Toast.makeText(this, "Brak połączenia z siecią!!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             PixabayPhoto photo = (PixabayPhoto) gridView.getAdapter().getItem(position);
 
             Intent intent = new Intent(getApplicationContext(), PhotoDetailsActivity.class);
