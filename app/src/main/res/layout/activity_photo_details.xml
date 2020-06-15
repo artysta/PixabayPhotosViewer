@@ -39,36 +39,76 @@
             android:layout_margin="3dp">
 
             <TextView
+                android:id="@+id/txt_photo_id_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID zdjęcia:"
+                style="@style/DetailsActivityStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
                 android:id="@+id/txt_photo_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="txt_photo_id"
+                android:layout_marginLeft="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_photo_id_info"/>
+
+            <TextView
+                android:id="@+id/txt_webview_url_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adres URL:"
+                style="@style/DetailsActivityStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_photo_id"/>
 
             <TextView
                 android:id="@+id/txt_webview_url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="txt_webview_url"
+                android:layout_marginLeft="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_photo_id" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_webview_url_info" />
 
             <TextView
-                android:id="@+id/txt_tags"
+                android:id="@+id/txt_user_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="txt_tags"
+                android:text="Użytkownik:"
+                style="@style/DetailsActivityStyle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_user" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_webview_url" />
 
             <TextView
                 android:id="@+id/txt_user"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="txt_user"
+                android:layout_marginLeft="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_webview_url" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_user_info" />
+
+            <TextView
+                android:id="@+id/txt_tags_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tagi:"
+                style="@style/DetailsActivityStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_user" />
+
+            <TextView
+                android:id="@+id/txt_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="txt_tags"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_tags_info" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
