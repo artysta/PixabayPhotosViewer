@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 // Pixabay API configuration.
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -43,4 +44,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'org.greenrobot:greendao:3.2.2'
 }
