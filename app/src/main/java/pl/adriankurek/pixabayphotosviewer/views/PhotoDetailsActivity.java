@@ -1,16 +1,20 @@
 package pl.adriankurek.pixabayphotosviewer.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.MessageFormat;
@@ -50,13 +54,27 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     }
 
     public void setPhotoDetails() {
+        ProgressBar progressBar = findViewById(R.id.progress_bar);
+        CardView cardDetails = findViewById(R.id.card_details);
         ImageView imgView = findViewById(R.id.imgView);
         TextView txtId = findViewById(R.id.txt_photo_id);
         TextView txtWebviewURL = findViewById(R.id.txt_webview_url);
         TextView txtUser = findViewById(R.id.txt_user);
         TextView txtTags = findViewById(R.id.txt_tags);
 
-        Picasso.get().load(photo.getWebformatURL()).into(imgView);
+        Picasso.get().load(photo.getWebformatURL()).into(imgView, new Callback() {
+            @Override
+            public void onSuccess() {
+                progressBar.setVisibility(View.GONE);
+                cardDetails.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onError(Exception e) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
         txtId.setText(String.valueOf(photo.getId()));
         txtWebviewURL.setText(photo.getWebformatURL());
         txtUser.setText(photo.getUser());
