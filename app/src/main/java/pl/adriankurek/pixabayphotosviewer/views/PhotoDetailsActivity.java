@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,10 +22,13 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import pl.adriankurek.pixabayphotosviewer.BuildConfig;
 import pl.adriankurek.pixabayphotosviewer.R;
+import pl.adriankurek.pixabayphotosviewer.database.DbController;
 import pl.adriankurek.pixabayphotosviewer.models.JSONHelper;
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
@@ -29,6 +36,8 @@ public class PhotoDetailsActivity extends AppCompatActivity {
     private final String API_KEY = BuildConfig.PIXABAY_API;
 
     private PixabayPhoto photo;
+    private DbController controller;
+    private ImageView imgFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,22 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         JSONHelper helper = new JSONHelper(this);
         List<PixabayPhoto> photos = helper.getImagesFromJSONURL(photoURL);
 
+        imgFavorite = findViewById(R.id.img_favorite);
+
+        controller = new DbController(this);
+
+        imgFavorite.setOnClickListener((v) -> {
+            if (controller.isOnFavoriteList(photo.getId())) {
+                // Remove photo from database if it is favorite.
+                controller.removePhotoFromFavorites(photo);
+                imgFavorite.setImageResource(R.drawable.ic_favorite_off);
+            } else {
+                // Add photo to database if it is not favorite.
+                controller.addNewFavoritePhoto(photo);
+                imgFavorite.setImageResource(R.drawable.ic_favorite_on);
+            }
+        });
+
         helper.addRequestFinishedListener(r -> {
             photo = photos.get(0);
             setPhotoDetails();
@@ -61,6 +86,14 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         TextView txtWebviewURL = findViewById(R.id.txt_webview_url);
         TextView txtUser = findViewById(R.id.txt_user);
         TextView txtTags = findViewById(R.id.txt_tags);
+
+        if (controller.isOnFavoriteList(photo.getId())) {
+            // Remove photo from database if it is favorite.
+            imgFavorite.setImageResource(R.drawable.ic_favorite_on);
+        } else {
+            // Add photo to database if it is not favorite.
+            imgFavorite.setImageResource(R.drawable.ic_favorite_off);
+        }
 
         Picasso.get().load(photo.getWebformatURL()).into(imgView, new Callback() {
             @Override
