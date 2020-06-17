@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private BaseAdapter adapter;
     private PhotoViewModel photoViewModel;
     private Button btn;
+    private Button btnFavorites;
     private EditText editSearch;
     private ProgressBar progressBar;
 
@@ -76,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
+        btnFavorites = findViewById(R.id.btn_favorites);
+        btnFavorites.setOnClickListener((v) -> {
+            Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
+            startActivity(intent);
+        });
     }
 
     // Initialize GridView and add on item click listener.
