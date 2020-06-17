@@ -10,4 +10,6 @@
     <string name="photo_user">Użytkownik</string>
     <string name="photo_tags">Tagi</string>
     <string name="photo_favorite">Dodaj do ulubionych</string>
+    <string name="added_to_favorites">Dodano do ulubionych</string>
+    <string name="removed_from_favorites">Usunięto z ulubionych</string>
 </resources>
