@@ -11,7 +11,7 @@ import com.android.volley.RequestQueue;
 import java.util.List;
 
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
-import pl.adriankurek.pixabayphotosviewer.models.PixabayPhotosRepository;
+import pl.adriankurek.pixabayphotosviewer.repositories.PixabayPhotosRepository;
 
 public class PhotoViewModel extends ViewModel {
     private MutableLiveData<List<PixabayPhoto>> photos;

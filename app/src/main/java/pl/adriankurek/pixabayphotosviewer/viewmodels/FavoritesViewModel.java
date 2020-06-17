@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import pl.adriankurek.pixabayphotosviewer.models.FavoritePhotosRepository;
+import pl.adriankurek.pixabayphotosviewer.repositories.FavoritePhotosRepository;
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
 public class FavoritesViewModel extends ViewModel {

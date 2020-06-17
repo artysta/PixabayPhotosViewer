@@ -1,4 +1,4 @@
-package pl.adriankurek.pixabayphotosviewer.models;
+package pl.adriankurek.pixabayphotosviewer.repositories;
 
 import android.content.Context;
 
@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.volley.RequestQueue;
 
 import java.util.List;
+
+import pl.adriankurek.pixabayphotosviewer.models.JSONHelper;
+import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
 public class PixabayPhotosRepository {
     private static PixabayPhotosRepository instance;

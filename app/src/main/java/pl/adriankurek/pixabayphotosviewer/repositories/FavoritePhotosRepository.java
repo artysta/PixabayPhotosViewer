@@ -1,16 +1,13 @@
-package pl.adriankurek.pixabayphotosviewer.models;
+package pl.adriankurek.pixabayphotosviewer.repositories;
 
 import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
-
-import com.android.volley.RequestQueue;
 
 import java.util.List;
 
 import pl.adriankurek.pixabayphotosviewer.database.DbController;
+import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
 public class FavoritePhotosRepository {
     private static FavoritePhotosRepository instance;
