@@ -64,7 +64,7 @@
                 android:layout_marginEnd="@dimen/photos_grid_margin"
                 android:layout_marginRight="@dimen/photos_grid_margin"
                 android:layout_marginBottom="@dimen/photos_grid_margin"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
 
@@ -86,9 +86,9 @@
                         android:id="@+id/img_favorite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txt_favorite_info"
-                        android:layout_marginLeft="5dp"
                         app:srcCompat="@drawable/ic_favorite_off"
                         tools:ignore="VectorDrawableCompat" />
 
