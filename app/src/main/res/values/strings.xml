@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PixabayPhotosViewer</string>
+    <string name="no_internet">Brak połączenia z siecią!</string>
+    <string name="empty_search_field">Pole szukaj nie może być puste!</string>
+    <string name="search_placeholder">Co chcesz znaleźć?</string>
+    <string name="btn_search">Szukaj</string>
+    <string name="btn_favorites">Ulubione</string>
+    <string name="photo_id">ID zdjęcia</string>
+    <string name="photo_url">Adres URL</string>
+    <string name="photo_user">Użytkownik</string>
+    <string name="photo_tags">Tagi</string>
+    <string name="photo_favorite">Dodaj do ulubionych</string>
 </resources>

@@ -48,7 +48,7 @@ public class FavoritesActivity extends AppCompatActivity {
         gridView.setOnItemClickListener((parent, view, position, id) -> {
             // Make toast and return if there is no internet connection.
             if (!NetworkChecker.isNetworkAvailable(this)) {
-                Toast.makeText(this, "Brak połączenia z siecią!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_internet, Toast.LENGTH_SHORT).show();
                 return;
             }
 

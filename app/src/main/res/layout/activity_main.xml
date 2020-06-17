@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Search photos..."
+        android:hint="@string/search_placeholder"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_favorites"
@@ -45,16 +45,15 @@
         android:id="@+id/btn_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Favorites"
+        android:text="@string/btn_favorites"
         app:layout_constraintEnd_toStartOf="@+id/btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@android:string/search_go"
+        android:text="@string/btn_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

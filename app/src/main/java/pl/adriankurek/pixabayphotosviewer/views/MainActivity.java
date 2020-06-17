@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
             // Make toast and return if the search query is empty.
             if (query.trim().equals("")) {
-                Toast.makeText(this, "Musisz coś wpisać!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.empty_search_field, Toast.LENGTH_SHORT).show();
                 return;
             }
 
             // Make toast and return if there is no internet connection.
             if (!NetworkChecker.isNetworkAvailable(this)) {
-                Toast.makeText(this, "Brak połączenia z siecią!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_internet, Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         gridView.setOnItemClickListener((parent, view, position, id) -> {
             // Make toast and return if there is no internet connection.
             if (!NetworkChecker.isNetworkAvailable(this)) {
-                Toast.makeText(this, "Brak połączenia z siecią!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_internet, Toast.LENGTH_SHORT).show();
                 return;
             }
 
