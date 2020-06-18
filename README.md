@@ -11,4 +11,9 @@ Zawartość pliku powinna wyglądać następująco:
 
 Klucz otrzymać można po zarejestrowaniu się na stronie https://pixabay.com/api/docs/.
 
+Aplikacja wykorzystuje zewnętrzne biblioteki:
+ - [Volley](https://github.com/google/volley) - do parsowania plików JSON,
+ - [greenDAO ORM](https://greenrobot.org/greendao/) - do zapisywania danych na temat zdjęć do bazy SQLite,
+ - [Picasso](https://github.com/square/picasso) - do pobierania zdjęć.
+
 <img src="./pixabay-logo.png" width="20%"></img>
