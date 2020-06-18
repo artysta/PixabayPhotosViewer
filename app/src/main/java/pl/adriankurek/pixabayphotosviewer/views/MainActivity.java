@@ -3,13 +3,9 @@ package pl.adriankurek.pixabayphotosviewer.views;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private GridView gridView;
     private BaseAdapter adapter;
     private PhotoViewModel photoViewModel;
-    private Button btn;
-    private Button btnFavorites;
     private EditText editSearch;
     private ProgressBar progressBar;
 
@@ -47,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         photoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
         photoViewModel.init();
 
-        btn = findViewById(R.id.btn);
         editSearch = findViewById(R.id.edit_search);
         progressBar = findViewById(R.id.progress_bar);
 
+        Button btn = findViewById(R.id.btn);
         btn.setOnClickListener((v) -> {
             String query = editSearch.getText().toString();
 
@@ -79,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        btnFavorites = findViewById(R.id.btn_favorites);
+        Button btnFavorites = findViewById(R.id.btn_favorites);
         btnFavorites.setOnClickListener((v) -> {
             Intent intent = new Intent(getApplicationContext(), FavoritesActivity.class);
             startActivity(intent);

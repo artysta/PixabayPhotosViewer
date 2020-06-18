@@ -1,7 +1,6 @@
 package pl.adriankurek.pixabayphotosviewer.database;
 
 import android.app.Activity;
-import android.widget.ProgressBar;
 
 import java.util.List;
 

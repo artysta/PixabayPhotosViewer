@@ -11,7 +11,7 @@ public class GreenDao extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        daoSession = new DaoMaster(new DbOpenHelper(this, "notes.db").getWritableDb()).newSession();
+        daoSession = new DaoMaster(new DbOpenHelper(this, "photos.db").getWritableDb()).newSession();
     }
 
     public DaoSession getDaoSession() {

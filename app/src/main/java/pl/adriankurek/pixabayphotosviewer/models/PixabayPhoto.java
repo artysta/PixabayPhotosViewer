@@ -7,7 +7,6 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
 // Class that describes images from pixabay.com (with just 2 fields at this moment)
-// TODO add rest of fields
 @Entity(nameInDb = "photos")
 public class PixabayPhoto {
     @Id

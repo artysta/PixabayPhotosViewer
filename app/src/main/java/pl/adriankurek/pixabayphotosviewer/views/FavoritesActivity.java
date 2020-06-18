@@ -13,7 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +53,7 @@ public class FavoritesActivity extends AppCompatActivity {
     // Hides or shows text information about favorite photos,
     public void checkIfThereArePhotos() {
         TextView txtFavorite = findViewById(R.id.txt_favorites);
+
         if (favoritesViewModel.getAllFavoritePhotos().getValue().size() == 0) {
             txtFavorite.setVisibility(View.VISIBLE);
         } else {

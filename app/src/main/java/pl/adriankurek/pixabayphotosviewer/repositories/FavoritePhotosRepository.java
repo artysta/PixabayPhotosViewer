@@ -1,7 +1,6 @@
 package pl.adriankurek.pixabayphotosviewer.repositories;
 
 import android.app.Activity;
-import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 

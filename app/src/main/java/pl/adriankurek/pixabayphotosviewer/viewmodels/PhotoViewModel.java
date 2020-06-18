@@ -23,7 +23,7 @@ public class PhotoViewModel extends ViewModel {
         repository = PixabayPhotosRepository.getInstance();
     }
 
-    public void reloadPhotos(Context ctx, String jsonURL, RequestQueue.RequestFinishedListener listener) {
+    public void reloadPhotos(Context ctx, String jsonURL, RequestQueue.RequestFinishedListener<Object> listener) {
         photos = repository.getPhotos(ctx, jsonURL, listener);
     }
 

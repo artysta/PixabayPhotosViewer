@@ -56,20 +56,12 @@ public class JSONHelper {
                             photo.setUser(user);
 
                             photos.add(photo);
-
-                            // Log.
-                            Log.i("JSON", photos.get(i).toString());
                         }
                     } catch (JSONException e) {
-                        Log.i("JSON", "ERROR: " + e.getMessage());
                         // TODO catch exception
                     }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.i("JSON", error != null ? error.getMessage() : "VolleyError == null");
-                    }
+                }, error -> {
+                    // TODO handle error
                 });
 
         queue.add(jsonObjectRequest);
