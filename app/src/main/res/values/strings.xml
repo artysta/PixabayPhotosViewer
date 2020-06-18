@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PixabayPhotosViewer</string>
+    <string name="app_name">Pixabay Photos Viewer</string>
     <string name="no_internet">Brak połączenia z siecią!</string>
     <string name="empty_search_field">Pole szukaj nie może być puste!</string>
     <string name="search_placeholder">Co chcesz znaleźć?</string>
@@ -12,4 +12,7 @@
     <string name="photo_favorite">Dodaj do ulubionych</string>
     <string name="added_to_favorites">Dodano do ulubionych</string>
     <string name="removed_from_favorites">Usunięto z ulubionych</string>
+    <string name="activity_details">Szczegóły zdjęcia</string>
+    <string name="activity_favorites">Ulubione zdjęcia</string>
+    <string name="no_favorites">Nie masz ulubionych zdjęć! Dodaj coś! :(</string>
 </resources>
