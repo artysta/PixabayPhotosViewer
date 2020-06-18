@@ -28,6 +28,8 @@ import pl.adriankurek.pixabayphotosviewer.viewmodels.PhotoViewModel;
 
 public class MainActivity extends AppCompatActivity {
     private final String API_KEY = BuildConfig.PIXABAY_API;
+    private static final int TIME_DELAY = 2000;
+    private static long BACK_PRESSED;
 
     private GridView gridView;
     private BaseAdapter adapter;
@@ -103,5 +105,17 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("PHOTO_ID", String.valueOf(photo.getId()));
             startActivity(intent);
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (BACK_PRESSED + TIME_DELAY > System.currentTimeMillis()) {
+            System.exit(0);
+        } else {
+            Toast.makeText(getBaseContext(), "Naciśnij jeszcze raz by wyjść z aplikacji.",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        BACK_PRESSED = System.currentTimeMillis();
     }
 }

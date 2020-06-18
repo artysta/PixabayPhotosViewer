@@ -61,6 +61,12 @@ public class PhotosAdapter extends BaseAdapter {
         return convertView;
     }
 
+    public void updatePhotosList(List<PixabayPhoto> photos) {
+        this.photos.clear();
+        this.photos.addAll(photos);
+        this.notifyDataSetChanged();
+    }
+
     private static class ViewHolder {
         ImageView image;
     }

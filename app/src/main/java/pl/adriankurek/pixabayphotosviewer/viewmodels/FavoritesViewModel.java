@@ -16,14 +16,16 @@ public class FavoritesViewModel extends ViewModel {
     private MutableLiveData<List<PixabayPhoto>> photos;
     private FavoritePhotosRepository repository;
 
-    public void init() {
+    public void init(Activity activity) {
         if (photos != null) return;
 
         repository = FavoritePhotosRepository.getInstance();
+        photos = repository.getFavoritePhotos(activity);
     }
 
     public void reloadPhotos(Activity activity) {
-        photos = repository.getFavoritePhotos(activity);
+        List<PixabayPhoto> currentPhotos = repository.getFavoritePhotos(activity).getValue();
+        photos.postValue(currentPhotos);
     }
 
     public LiveData<List<PixabayPhoto>> getAllFavoritePhotos() {

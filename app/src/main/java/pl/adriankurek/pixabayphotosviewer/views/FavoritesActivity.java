@@ -20,13 +20,13 @@ import android.widget.Toast;
 
 public class FavoritesActivity extends AppCompatActivity {
     private GridView gridView;
-    private BaseAdapter adapter;
+    private PhotosAdapter adapter;
     private FavoritesViewModel favoritesViewModel;
 
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "Photos reloaded!", Toast.LENGTH_SHORT).show();
+        // Reload photos to check if any of them has been removed from favorites.
         favoritesViewModel.reloadPhotos(this);
     }
 
@@ -42,15 +42,23 @@ public class FavoritesActivity extends AppCompatActivity {
         setTitle("Ulubione zdjęcia");
 
         favoritesViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
-        favoritesViewModel.init();
-        favoritesViewModel.reloadPhotos(this);
-        favoritesViewModel.getAllFavoritePhotos().observe(this, o -> adapter.notifyDataSetChanged());
-
-        TextView txtFavorite = findViewById(R.id.txt_favorites);
-        if (favoritesViewModel.getAllFavoritePhotos().getValue().size() == 0) txtFavorite.setVisibility(View.VISIBLE);
+        favoritesViewModel.init(this);
+        favoritesViewModel.getAllFavoritePhotos().observe(this, o -> {
+            adapter.updatePhotosList(favoritesViewModel.getAllFavoritePhotos().getValue());
+            checkIfThereArePhotos();
+        });
 
         initGridView();
+    }
 
+    // Hides or shows text information about favorite photos,
+    public void checkIfThereArePhotos() {
+        TextView txtFavorite = findViewById(R.id.txt_favorites);
+        if (favoritesViewModel.getAllFavoritePhotos().getValue().size() == 0) {
+            txtFavorite.setVisibility(View.VISIBLE);
+        } else {
+            txtFavorite.setVisibility(View.INVISIBLE);
+        }
     }
 
     // Initialize GridView and add on item click listener.
