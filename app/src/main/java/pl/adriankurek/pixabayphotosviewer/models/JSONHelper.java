@@ -29,44 +29,40 @@ public class JSONHelper {
         final List<PixabayPhoto> photos = new ArrayList<>();
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET, url, null, response -> {
+                    Log.i("JSON", String.format("Response: %s", response.toString()));
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.i("JSON", String.format("Response: %s", response.toString()));
+                    try {
+                        JSONArray array = response.getJSONArray("hits");
 
-                        try {
-                            JSONArray array = response.getJSONArray("hits");
+                        // Loop through the images and just log info.
+                        for (int i = 0; i < array.length(); i++) {
+                            // Get current JSON object.
+                            JSONObject jsonPhotos = array.getJSONObject(i);
 
-                            // Loop through the images and just log info.
-                            for (int i = 0; i < array.length(); i++) {
-                                // Get current JSON object.
-                                JSONObject jsonPhotos = array.getJSONObject(i);
+                            // Get the current image data.
+                            String id = jsonPhotos.getString("id");
+                            String previewURL = jsonPhotos.getString("previewURL");
+                            String webformatURL = jsonPhotos.getString("webformatURL");
+                            String tags = jsonPhotos.getString("tags");
+                            String user = jsonPhotos.getString("user");
 
-                                // Get the current image data.
-                                String id = jsonPhotos.getString("id");
-                                String previewURL = jsonPhotos.getString("previewURL");
-                                String webformatURL = jsonPhotos.getString("webformatURL");
-                                String tags = jsonPhotos.getString("tags");
-                                String user = jsonPhotos.getString("user");
+                            // Create photo and set data.
+                            PixabayPhoto photo = new PixabayPhoto();
+                            photo.setId(Integer.parseInt(id));
+                            photo.setPreviewURL(previewURL);
+                            photo.setWebformatURL(webformatURL);
+                            photo.setTags(tags);
+                            photo.setUser(user);
 
-                                // Create photo and set data.
-                                PixabayPhoto photo = new PixabayPhoto();
-                                photo.setId(Integer.parseInt(id));
-                                photo.setPreviewURL(previewURL);
-                                photo.setWebformatURL(webformatURL);
-                                photo.setTags(tags);
-                                photo.setUser(user);
+                            photos.add(photo);
 
-                                photos.add(photo);
-
-                                // Log.
-                                Log.i("JSON", photos.get(i).toString());
-                            }
-                        } catch (JSONException e) {
-                            Log.i("JSON", "ERROR: " + e.getMessage());
-                            // TODO catch exception
+                            // Log.
+                            Log.i("JSON", photos.get(i).toString());
                         }
+                    } catch (JSONException e) {
+                        Log.i("JSON", "ERROR: " + e.getMessage());
+                        // TODO catch exception
                     }
                 }, new Response.ErrorListener() {
 
@@ -82,7 +78,7 @@ public class JSONHelper {
         return photos;
     }
 
-    public void addRequestFinishedListener(RequestQueue.RequestFinishedListener listener) {
+    public void addRequestFinishedListener(RequestQueue.RequestFinishedListener<Object> listener) {
         queue.addRequestFinishedListener(listener);
     }
 }
