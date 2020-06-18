@@ -12,8 +12,10 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FavoritesActivity extends AppCompatActivity {
@@ -22,26 +24,38 @@ public class FavoritesActivity extends AppCompatActivity {
     private FavoritesViewModel favoritesViewModel;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "Photos reloaded!", Toast.LENGTH_SHORT).show();
+        favoritesViewModel.reloadPhotos(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
+        setTitle(R.string.activity_favorites);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
+        setTitle("Ulubione zdjęcia");
 
         favoritesViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
         favoritesViewModel.init();
         favoritesViewModel.reloadPhotos(this);
+        favoritesViewModel.getAllFavoritePhotos().observe(this, o -> adapter.notifyDataSetChanged());
+
+        TextView txtFavorite = findViewById(R.id.txt_favorites);
+        if (favoritesViewModel.getAllFavoritePhotos().getValue().size() == 0) txtFavorite.setVisibility(View.VISIBLE);
 
         initGridView();
 
-        favoritesViewModel.getAllFavoritePhotos().observe(this, u -> adapter.notifyDataSetChanged());
     }
 
     // Initialize GridView and add on item click listener.
     private void initGridView() {
         gridView = findViewById(R.id.grid_photos);
-        Toast.makeText(this, "" + favoritesViewModel.getAllFavoritePhotos().getValue().size(), Toast.LENGTH_SHORT).show();
         adapter = new PhotosAdapter(this, favoritesViewModel.getAllFavoritePhotos().getValue());
         gridView.setAdapter(adapter);
 

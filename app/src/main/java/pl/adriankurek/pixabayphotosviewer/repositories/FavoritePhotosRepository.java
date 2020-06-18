@@ -1,9 +1,11 @@
 package pl.adriankurek.pixabayphotosviewer.repositories;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.adriankurek.pixabayphotosviewer.database.DbController;

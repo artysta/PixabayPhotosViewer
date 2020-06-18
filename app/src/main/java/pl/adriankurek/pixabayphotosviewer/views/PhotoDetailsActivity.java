@@ -44,8 +44,10 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_details);
 
+        setTitle(R.string.activity_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
 
         // Get selected photo id.
         Intent intent = getIntent();
@@ -65,10 +67,12 @@ public class PhotoDetailsActivity extends AppCompatActivity {
                 // Remove photo from database if it is favorite.
                 controller.removePhotoFromFavorites(photo);
                 imgFavorite.setImageResource(R.drawable.ic_favorite_off);
+                Toast.makeText(this, R.string.removed_from_favorites, Toast.LENGTH_SHORT).show();
             } else {
                 // Add photo to database if it is not favorite.
                 controller.addNewFavoritePhoto(photo);
                 imgFavorite.setImageResource(R.drawable.ic_favorite_on);
+                Toast.makeText(this, R.string.added_to_favorites, Toast.LENGTH_SHORT).show();
             }
         });
 
