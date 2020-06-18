@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.FavoritesActivity"></activity>
+        <activity android:name=".views.MainActivity"></activity>
+        <activity android:name=".views.FavoritesActivity" />
         <activity
             android:name=".views.PhotoDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".views.MainActivity"
+            android:name=".views.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
