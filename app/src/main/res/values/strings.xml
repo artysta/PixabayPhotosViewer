@@ -15,4 +15,5 @@
     <string name="activity_details">Szczegóły zdjęcia</string>
     <string name="activity_favorites">Ulubione zdjęcia</string>
     <string name="no_favorites">Nie masz ulubionych zdjęć! Dodaj coś! :(</string>
+    <string name="error">Coś poszło nie tak!</string>
 </resources>
