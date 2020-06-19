@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -100,6 +102,7 @@ public class PhotoDetailsActivity extends AppCompatActivity {
             @Override
             public void onError(Exception e) {
                 progressBar.setVisibility(View.GONE);
+                showErrorMessage();
             }
         });
 
@@ -117,5 +120,10 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showErrorMessage() {
+        TextView txtError = findViewById(R.id.txt_error);
+        txtError.setVisibility(View.VISIBLE);
     }
 }
