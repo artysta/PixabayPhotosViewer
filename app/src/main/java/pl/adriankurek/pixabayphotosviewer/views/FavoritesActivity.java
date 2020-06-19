@@ -64,7 +64,7 @@ public class FavoritesActivity extends AppCompatActivity {
     // Initialize GridView and add on item click listener.
     private void initGridView() {
         gridView = findViewById(R.id.grid_photos);
-        adapter = new PhotosAdapter(this, favoritesViewModel.getAllFavoritePhotos().getValue());
+        adapter = new PhotosAdapter(this);
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener((parent, view, position, id) -> {

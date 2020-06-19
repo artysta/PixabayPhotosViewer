@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private static long BACK_PRESSED;
 
     private GridView gridView;
-    private BaseAdapter adapter;
+    private PhotosAdapter adapter;
     private PhotoViewModel photoViewModel;
     private EditText editSearch;
     private ProgressBar progressBar;
@@ -38,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initGridView();
+
         photoViewModel = ViewModelProviders.of(this).get(PhotoViewModel.class);
         photoViewModel.init();
+        photoViewModel.getPhotos().observe(this, u -> adapter.updatePhotosList(photoViewModel.getPhotos().getValue()));
 
         editSearch = findViewById(R.id.edit_search);
         progressBar = findViewById(R.id.progress_bar);
@@ -67,9 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
             // Realoads photos basing on a search query.
             photoViewModel.reloadPhotos(this, requestURL, (r) -> {
-                initGridView();
-                photoViewModel.getPhotos().observe(this, u -> adapter.notifyDataSetChanged());
                 progressBar.setVisibility(View.GONE);
+                Log.i("MVVM", "reloadPhotos MainActivity [CALLBACK]");
             });
         });
 
@@ -82,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Initialize GridView and add on item click listener.
     private void initGridView() {
+        adapter = new PhotosAdapter(this);
         gridView = findViewById(R.id.grid_photos);
-        adapter = new PhotosAdapter(this, photoViewModel.getPhotos().getValue());
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener((parent, view, position, id) -> {

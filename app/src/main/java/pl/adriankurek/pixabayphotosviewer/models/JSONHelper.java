@@ -1,7 +1,6 @@
 package pl.adriankurek.pixabayphotosviewer.models;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -30,7 +29,6 @@ public class JSONHelper {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, response -> {
-                    Log.i("JSON", String.format("Response: %s", response.toString()));
 
                     try {
                         JSONArray array = response.getJSONArray("hits");

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pl.adriankurek.pixabayphotosviewer.R;
@@ -19,10 +20,10 @@ public class PhotosAdapter extends BaseAdapter {
     private Context ctx;
     private LayoutInflater inflater;
 
-    public PhotosAdapter(Context ctx, List<PixabayPhoto> photos){
+    public PhotosAdapter(Context ctx){
         this.ctx = ctx;
-        this.photos = photos;
         this.inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.photos = new ArrayList<>();
     }
 
     public int getCount(){

@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.text.MessageFormat;
 import java.util.List;
 

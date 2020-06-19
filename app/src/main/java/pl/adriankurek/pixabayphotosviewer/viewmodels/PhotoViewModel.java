@@ -21,10 +21,15 @@ public class PhotoViewModel extends ViewModel {
         if (photos != null) return;
 
         repository = PixabayPhotosRepository.getInstance();
+        photos = new MutableLiveData<>();
     }
 
     public void reloadPhotos(Context ctx, String jsonURL, RequestQueue.RequestFinishedListener<Object> listener) {
-        photos = repository.getPhotos(ctx, jsonURL, listener);
+        List<PixabayPhoto> currentPhotos = repository.getPhotos(ctx, jsonURL).getValue();
+
+        repository.setListener((r) -> {
+            photos.postValue(currentPhotos);
+        });
     }
 
     public LiveData<List<PixabayPhoto>> getPhotos() {
