@@ -10,6 +10,7 @@ Do działania aplikacji potrzebny jest **klucz API**, który powinien zostać um
 
 Zawartość pliku powinna wyglądać następująco:
 
+`PIXABAY_MAIN_URL = "https://pixabay.com/api/?key="`</br>
 `PIXABAY_API = "TWÓJ_KLUCZ_API"`
 
 Klucz otrzymać można po zarejestrowaniu się na stronie https://pixabay.com/api/docs/.
