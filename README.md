@@ -1,5 +1,8 @@
 # PixabayPhotosViewer
+
 Aplikacja wykonana na potrzeby projektu zaliczeniowego z przedmiotu **Programowanie urządzeń mobilnych** w **Wyższej Szkole Ekonomii i Informatyki w Krakowie**.
+
+## #1 O aplikacji
 
 Aplikacja służy m.in. do przeglądania zdjęć pochodzących z jednej z popularniejszych stron stockowych.
 
@@ -16,4 +19,18 @@ Aplikacja wykorzystuje zewnętrzne biblioteki:
  - [greenDAO ORM](https://greenrobot.org/greendao/) - do zapisywania danych na temat zdjęć do bazy SQLite,
  - [Picasso](https://github.com/square/picasso) - do pobierania zdjęć.
 
-<img src="./pixabay-logo.png" width="20%"></img>
+## #2 Kilka zrzutów ekranu
+
+<table>
+ <tr>
+  <td>
+   <img src="/screenshots/screenshot-1.jpg" alt="screenshot-1.png"/>
+  </td>
+  <td>
+   <img src="/screenshots/screenshot-2.jpg" alt="screenshot-1.png"/>
+  </td>
+  <td>
+   <img src="/screenshots/screenshot-3.jpg" alt="screenshot-1.png"/>
+  </td>
+ </tr>
+</table>
