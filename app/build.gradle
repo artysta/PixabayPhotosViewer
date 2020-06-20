@@ -18,7 +18,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         // Pixabay API configuration.
+        buildConfigField("String", "PIXABAY_MAIN_URL", apikeyProperties['PIXABAY_MAIN_URL'])
         buildConfigField("String", "PIXABAY_API", apikeyProperties['PIXABAY_API'])
+
     }
     buildTypes {
         release {

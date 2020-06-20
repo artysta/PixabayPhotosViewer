@@ -23,7 +23,6 @@ import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 import pl.adriankurek.pixabayphotosviewer.viewmodels.PhotoViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    private final String API_KEY = BuildConfig.PIXABAY_API;
     private static final int TIME_DELAY = 2000;
     private static long BACK_PRESSED;
 
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
 
             // {0} stands for API_KEY, {1} for search query.
-            String requestURL = MessageFormat.format("https://pixabay.com/api/?key={0}&q={1}&image_type=photo", API_KEY, query);
+            String requestURL = MessageFormat.format("{0}{1}&q={2}&image_type=photo", BuildConfig.PIXABAY_MAIN_URL, BuildConfig.PIXABAY_API, query);
 
             // Realoads photos basing on a search query.
             photoViewModel.reloadPhotos(this, requestURL, (r) -> {

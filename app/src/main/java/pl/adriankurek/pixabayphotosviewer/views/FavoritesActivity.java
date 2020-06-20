@@ -6,6 +6,7 @@ import pl.adriankurek.pixabayphotosviewer.models.NetworkChecker;
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 import pl.adriankurek.pixabayphotosviewer.viewmodels.FavoritesViewModel;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -35,10 +36,12 @@ public class FavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
 
         setTitle(R.string.activity_favorites);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
-        setTitle("Ulubione zdjęcia");
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         favoritesViewModel = ViewModelProviders.of(this).get(FavoritesViewModel.class);
         favoritesViewModel.init(this);

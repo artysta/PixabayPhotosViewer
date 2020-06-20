@@ -1,5 +1,6 @@
 package pl.adriankurek.pixabayphotosviewer.views;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -25,8 +26,6 @@ import pl.adriankurek.pixabayphotosviewer.models.JSONHelper;
 import pl.adriankurek.pixabayphotosviewer.models.PixabayPhoto;
 
 public class PhotoDetailsActivity extends AppCompatActivity {
-    private final String API_KEY = BuildConfig.PIXABAY_API;
-
     private PixabayPhoto photo;
     private DbController controller;
     private ImageView imgFavorite;
@@ -37,14 +36,18 @@ public class PhotoDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_photo_details);
 
         setTitle(R.string.activity_details);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         // Get selected photo id.
         Intent intent = getIntent();
         String photoId = intent.getStringExtra("PHOTO_ID");
 
-        String photoURL = MessageFormat.format("https://pixabay.com/api/?key={0}&id={1}", API_KEY, photoId);
+        String photoURL = MessageFormat.format("{0}{1}&id={2}", BuildConfig.PIXABAY_MAIN_URL, BuildConfig.PIXABAY_API, photoId);
 
         JSONHelper helper = new JSONHelper(this);
         List<PixabayPhoto> photos = helper.getImagesFromJSONURL(photoURL);
